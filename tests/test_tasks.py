@@ -60,6 +60,8 @@ class TestStorage(unittest.TestCase):
                              'test_xml.xml']
 
         storage = S3Storage(conf)
+        for i in s3_test_file_list:
+            storage.write_file(i, TEST_CONTENT)
         result = storage.list_dir()
         self.assertListEqual(sorted(result), sorted(s3_test_file_list))
         for file_name in result:
@@ -96,7 +98,7 @@ class TestStorage(unittest.TestCase):
         """Tests the sftp push"""
         conf = {
             'path': '/upload/tests/files/done/',
-            'FTP_HOST': 'sftp_server',
+            'FTP_HOST': 'localhost',
             'FTP_USER': 'foo',
             'FTP_PASSWORD': 'pass',
             'FTP_PORT': '2222'
@@ -108,7 +110,7 @@ class TestStorage(unittest.TestCase):
         """Tests the sftp push"""
         conf = {
             'path': '/upload/tests/files/tmp',
-            'FTP_HOST': 'sftp_server',
+            'FTP_HOST': 'localhost',
             'FTP_USER': 'foo',
             'FTP_PASSWORD': 'pass',
             'FTP_PORT': '2222'
@@ -126,7 +128,7 @@ class TestStorage(unittest.TestCase):
         """test the sftp list dir"""
         conf = {
             'path': '/upload/tests/files',
-            'FTP_HOST': 'sftp_server',
+            'FTP_HOST': 'localhost',
             'FTP_USER': 'foo',
             'FTP_PASSWORD': 'pass',
             'FTP_PORT': '2222'
