@@ -96,7 +96,7 @@ class TestStorage(unittest.TestCase):
         """Tests the sftp push"""
         conf = {
             'path': '/upload/tests/files/done/',
-            'FTP_HOST': 'sftp_server',
+            'FTP_HOST': settings.WRITE_FTP_HOST,
             'FTP_USER': 'foo',
             'FTP_PASSWORD': 'pass',
             'FTP_PORT': '2222'
@@ -108,7 +108,7 @@ class TestStorage(unittest.TestCase):
         """Tests the sftp push"""
         conf = {
             'path': '/upload/tests/files/tmp',
-            'FTP_HOST': 'sftp_server',
+            'FTP_HOST': settings.WRITE_FTP_HOST,
             'FTP_USER': 'foo',
             'FTP_PASSWORD': 'pass',
             'FTP_PORT': '2222'
@@ -126,7 +126,7 @@ class TestStorage(unittest.TestCase):
         """test the sftp list dir"""
         conf = {
             'path': '/upload/tests/files',
-            'FTP_HOST': 'sftp_server',
+            'FTP_HOST': settings.READ_FTP_HOST,
             'FTP_USER': 'foo',
             'FTP_PASSWORD': 'pass',
             'FTP_PORT': '2222'
