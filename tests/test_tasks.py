@@ -60,6 +60,8 @@ class TestStorage(unittest.TestCase):
                              'test_xml.xml']
 
         storage = S3Storage(conf)
+        for i in s3_test_file_list:
+            storage.write_file(i, TEST_CONTENT)
         result = storage.list_dir()
         self.assertListEqual(sorted(result), sorted(s3_test_file_list))
         for file_name in result:
